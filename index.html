@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+HELLO
+<script>
+   function loadDoc(url,cfunc){
+       var xhttp;
+       xhttp=new XMLHttpRequest();
+       xhttp.onreadystatechange = function(){
+           if(xhttp.readyState == 4 && xhttp.status == 200)
+           {
+               cfunc(xhttp);
+           }
+       }
+       xhttp.open('GET',url,true);
+       xhttp.send()
+   }
+function myFunction(xhr){
+    console.log(xhr.response);
+ var data = JSON.parse(xhr.responseText);
+    console.log(data);
+}
+    loadDoc('data.json',myFunction)
+</script>
+</body>
+</html>
