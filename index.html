@@ -5,26 +5,12 @@
     <title></title>
 </head>
 <body>
-HELLO
-<script>
-   function loadDoc(url,cfunc){
-       var xhttp;
-       xhttp=new XMLHttpRequest();
-       xhttp.onreadystatechange = function(){
-           if(xhttp.readyState == 4 && xhttp.status == 200)
-           {
-               cfunc(xhttp);
-           }
-       }
-       xhttp.open('GET',url,true);
-       xhttp.send()
-   }
-function myFunction(xhr){
-    console.log(xhr.response);
- var data = JSON.parse(xhr.responseText);
-    console.log(data);
-}
-    loadDoc('data.json',myFunction)
-</script>
+<h1>HELLO WORLD</h1>
+<a href="./#foo">foo</a>
+<a href="./#bar">bar</a>
+<a href="./#home">home</a>
+<div id="content"></div>
+<script src="app/app.js"></script>
+<script src="app/routing.js"></script>
 </body>
 </html>
