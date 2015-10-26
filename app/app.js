@@ -20,21 +20,25 @@ function writeHTML(xhr) {
 }
 
 function writeScript(xhr){
-    //var theScript = xhr.responseText;
     var newScript = document.createElement('script');
     newScript.text = xhr.responseText;
     document.getElementsByTagName("head").item(0).appendChild(newScript);
 }
 
+function writeJSON(xhr){
+    var data = JSON.parse(xhr.responseText);
+    console.log(data);
+}
 
 window.onhashchange = function () {
     doSomethingWithHash(window.location.hash);
     var page = window.location.hash.split('#');
     var newPage = 'app/'+ page[1] + '/' + page[1]+'.html';
     var newScript = 'app/'+ page[1] + '/' + page[1]+'.js';
+    var newJson = 'app/'+ page[1] + '/' + 'data.json';
     loadDoc(newPage,writeHTML);
-    loadDoc(newScript,writeScript)
+    loadDoc(newScript,writeScript);
+    loadDoc(newJson,writeJSON)
 };
 
 window.location.hash = '#home'
-//loadDoc('app/home/data.json', writeHTML);
