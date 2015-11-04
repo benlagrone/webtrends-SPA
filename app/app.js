@@ -7,6 +7,3 @@ function doSomethingWithHash(hash) {
 
 
 
-
-window.location.hash = '#home';
-

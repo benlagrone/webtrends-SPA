@@ -5,6 +5,7 @@
 var services = {};
 
 services.loadPage = function(url,callBack){
+    console.log(url)
     var xhttp;
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
