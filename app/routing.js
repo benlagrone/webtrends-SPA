@@ -1,5 +1,7 @@
 /**
  * Created by blagrone on 10/25/15.
+ *
+
  */
 
 
@@ -12,23 +14,45 @@ window.onhashchange = function () {
     routing.changeHash(page[1]);
 };
 
-routing.changeHash = function(page){
+routing.changeHash = function(page,callback){
     var newPage = 'app/'+ page + '/' + page+'.html';
     var newScript = 'app/'+ page + '/' + page+'.js';
     var newJson = 'app/'+ page + '/' + 'data.json';
-    services.loadPage(newPage,routing.writeHTML);
-    services.loadPage(newScript,routing.writeScript);
-    services.loadPage(newJson,routing.writeJSON);
+    services.getPage(newPage,routing.writeHTML);
+    services.getPage(newScript,routing.writeScript);
+    services.getPage(newJson,routing.writeJSON);
 };
 
-routing.routingTable = function(){
-    var routes = {
-        route:{
-            id:'home',
-            path:''
-        }
-    }
-};
+foo = function(pageRoute){
+    console.log(pageRoute)
+}
+
+routing.routesArray = [];
+routing.register = function(path, callBack){
+    var routeObject = {}
+    var name = "name";
+    routeObject[name] = path;
+    routeObject.name = path;
+    routing.routesArray.push(routeObject)
+console.log(routing.routesArray)
+    //console.log(callback)
+    //callback()
+}
+
+routing.register('weather',function(evt){
+    pageRoute = {
+        page:"weather.html",
+        route:"app/weather/"
+    };
+    console.log(evt)
+    foo(pageRoute)
+});
+routing.register('home',function(evt){
+    pageRoute = {
+        page:"home.html",
+        route:"app/home/"
+    };
+});
 
 routing.writeHTML = function(xhr){
     var theHTML = xhr.responseText;
