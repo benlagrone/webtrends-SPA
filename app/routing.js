@@ -1,17 +1,17 @@
 /**
  * Created by blagrone on 10/25/15.
  *
-
  */
 
 
 var routing = {}
 
 window.onhashchange = function () {
-    doSomethingWithHash(window.location.hash);
+    //doSomethingWithHash(window.location.hash);
     var page = window.location.hash.split('#');
-    console.log(page)
-    routing.changeHash(page[1]);
+    //console.log(page)
+    //routing.changeHash(page[1]);
+    routing.useArray(page[1])
 };
 
 routing.changeHash = function(page,callback){
@@ -29,15 +29,14 @@ foo = function(pageRoute){
 
 routing.routesArray = [];
 routing.register = function(path, callBack){
-    var routeObject = {}
-    var name = "name";
-    routeObject[name] = path;
-    routeObject.name = path;
+    var routeObject = {};
+    //var name = "name";
+    //routeObject[path] = path;
+    routeObject.path = path;
+    //routeObject[callBack] = callBack;
+    routeObject.callBack = callBack;
     routing.routesArray.push(routeObject)
-console.log(routing.routesArray)
-    //console.log(callback)
-    //callback()
-}
+};
 
 routing.register('weather',function(evt){
     pageRoute = {
@@ -53,6 +52,44 @@ routing.register('home',function(evt){
         route:"app/home/"
     };
 });
+routing.register('foo',function(evt){
+    pageRoute = {
+        page:"foo.html",
+        route:"foo/weather/"
+    };
+    console.log(evt)
+    foo(pageRoute)
+});
+routing.register('bar',function(){
+    pageRoute = {
+        page:"bar.html",
+        route:"app/bar/"
+    };
+    console.log("$$$$BAR %%%");
+});
+//console.log(routing.routesArray)
+
+
+//now write a function that uses the route array
+routing.useArray = function(path){
+    console.log(path)
+    console.log(routing.routesArray)
+    routing.routesArray.every(function(x){
+        console.log(x.path==path)
+    })
+};
+
+function useArrayCallBack(value, index, ar, path){
+    console.log(path)
+    console.log(value)
+    console.log(index)
+    //console.log(ar)
+    //console.log(ar[index])
+    //console.log(ar[index].callBack);
+    var newScript = document.createElement('script');
+    newScript.text = ar[index].callBack;
+    document.getElementsByTagName("head").item(0).appendChild(newScript);
+}
 
 routing.writeHTML = function(xhr){
     var theHTML = xhr.responseText;
