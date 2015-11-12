@@ -24,7 +24,7 @@ routing.changeHash = function(page,callback){
 };
 
 foo = function(pageRoute){
-    console.log(pageRoute)
+    console.log("HIIII")
 }
 
 routing.routesArray = [];
@@ -39,10 +39,7 @@ routing.register = function(path, callBack){
 };
 
 routing.register('weather',function(evt){
-    pageRoute = {
-        page:"weather.html",
-        route:"app/weather/"
-    };
+    pageRoute = {page:"weather.html",route:"app/weather/"};
     console.log(evt)
     foo(pageRoute)
 });
@@ -61,10 +58,7 @@ routing.register('foo',function(evt){
     foo(pageRoute)
 });
 routing.register('bar',function(){
-    pageRoute = {
-        page:"bar.html",
-        route:"app/bar/"
-    };
+
     console.log("$$$$BAR %%%");
 });
 //console.log(routing.routesArray)
@@ -74,21 +68,19 @@ routing.register('bar',function(){
 routing.useArray = function(path){
     console.log(path)
     console.log(routing.routesArray)
-    routing.routesArray.every(function(x){
-        console.log(x.path==path)
-    })
+    for(i=0;i<routing.routesArray.length;i++){
+        if(routing.routesArray[i].path===path)
+        routing.routesArray[i].callBack.call();
+    }
 };
 
-function useArrayCallBack(value, index, ar, path){
-    console.log(path)
-    console.log(value)
-    console.log(index)
-    //console.log(ar)
-    //console.log(ar[index])
-    //console.log(ar[index].callBack);
+function useArrayCallBack(value, index, path){
     var newScript = document.createElement('script');
-    newScript.text = ar[index].callBack;
-    document.getElementsByTagName("head").item(0).appendChild(newScript);
+    newScript.text = value.callBack;
+    [value.callBack]
+    console.log(newScript)
+    console.log(document.getElementsByTagName("head")[0])
+    document.getElementsByTagName("head")[0].appendChild(newScript);
 }
 
 routing.writeHTML = function(xhr){
