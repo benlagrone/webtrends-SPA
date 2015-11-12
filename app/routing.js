@@ -39,26 +39,33 @@ routing.register = function(path, callBack){
 };
 
 routing.register('weather',function(evt){
-    pageRoute = {page:"weather.html",route:"app/weather/"};
+    pageRoute = {page:"weather.html",route:"app/weather/",
+        controller:'weather'};
     console.log(evt)
     foo(pageRoute)
 });
 routing.register('home',function(evt){
     pageRoute = {
         page:"home.html",
-        route:"app/home/"
+        route:"app/home/",
+        controller:'home'
     };
 });
 routing.register('foo',function(evt){
     pageRoute = {
         page:"foo.html",
-        route:"foo/weather/"
+        route:"app/foo/",
+        controller:'weather'
     };
     console.log(evt)
     foo(pageRoute)
 });
 routing.register('bar',function(){
-
+    pageRoute = {
+        page:"bar.html",
+        route:"app/bar/",
+        controller:'bar'
+    };
     console.log("$$$$BAR %%%");
 });
 //console.log(routing.routesArray)
@@ -72,16 +79,10 @@ routing.useArray = function(path){
         if(routing.routesArray[i].path===path)
         routing.routesArray[i].callBack.call();
     }
+    console.log(pageRoute)
 };
 
-function useArrayCallBack(value, index, path){
-    var newScript = document.createElement('script');
-    newScript.text = value.callBack;
-    [value.callBack]
-    console.log(newScript)
-    console.log(document.getElementsByTagName("head")[0])
-    document.getElementsByTagName("head")[0].appendChild(newScript);
-}
+
 
 routing.writeHTML = function(xhr){
     var theHTML = xhr.responseText;
