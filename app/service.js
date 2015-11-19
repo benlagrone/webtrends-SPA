@@ -3,6 +3,7 @@
  */
 
 var services = {};
+services.routing = {};
 
 services.getPage = function(url,callBack){
     console.log(url)
