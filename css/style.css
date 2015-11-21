@@ -15,7 +15,8 @@ footer{
 .color-3 { background-color: #0F85D1 }
 .color-4 { background-color: #0665A2 }
 .wet-asphalt{background-color:#34495e}
-
+.white{color:white;}
+.right-link{position:absolute;right:0;cursor:pointer;margin-top:5%;opacity:0.8}
 @media (orientation:portrait){
     section{width:100%;}
     section > div:first-of-type{height:110px}
