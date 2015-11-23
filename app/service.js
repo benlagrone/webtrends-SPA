@@ -21,10 +21,10 @@ services.routing = {};
 services.routing.changeHash = function(page,callback){
     var newPage = 'app/'+ page + '/' + page+'.html';
     var newScript = 'app/'+ page + '/' + page+'.js';
-    var newJson = 'app/'+ page + '/' + 'data.json';
+    //var newJson = 'app/'+ page + '/' + 'data.json';
     services.getPage(newPage,services.routing.writeHTML);
     services.getPage(newScript,services.routing.writeScript);
-    services.getPage(newJson,services.routing.writeJSON);
+    //services.getPage(newJson,services.routing.writeJSON);
 };
 
 services.routing.useArray = function(path){

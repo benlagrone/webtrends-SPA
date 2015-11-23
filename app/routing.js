@@ -29,11 +29,11 @@ routing.register('home',function(evt){
     };
     //routing.changeHash("home")
 });
-routing.register('foo',function(evt){
+routing.register('travel',function(evt){
     pageRoute = {
-        page:"foo.html",
-        route:"app/foo/",
-        controller:'foo'
+        page:"travel.html",
+        route:"app/travel/",
+        controller:'travel'
     };
     //console.log(evt)
 });
@@ -42,6 +42,22 @@ routing.register('news',function(){
         page:"news.html",
         route:"app/news/",
         controller:'news'
+    };
+    //console.log("$$$$BAR %%%");
+});
+routing.register('stocks',function(){
+    pageRoute = {
+        page:"stocks.html",
+        route:"app/stocks/",
+        controller:'stocks'
+    };
+    //console.log("$$$$BAR %%%");
+});
+routing.register('calendar',function(){
+    pageRoute = {
+        page:"calendar.html",
+        route:"app/calendar/",
+        controller:'calendar'
     };
     //console.log("$$$$BAR %%%");
 });

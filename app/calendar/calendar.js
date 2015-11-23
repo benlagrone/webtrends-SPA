@@ -1,9 +1,9 @@
 
-console.log('news!');
+console.log('calendar!');
 var apiKey = '24e09a475c690683d9d218c1260a6ca2:5:73536423';
 var section = 'world';
 var responseFormat = 'json';
-var url = 'http://api.nytimes.com/svc/topstories/v1/'+ section + '.' + responseFormat + '?api-key=' + apiKey;
+var url = 'app/calendar/data.json';
 url2 = 'http://api.feedzilla.com/v1/categories.json';
 services.getPage(url,parseNews);
 
