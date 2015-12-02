@@ -1,8 +1,10 @@
 body{
-    font-family: 'Lato', sans-serif;
     margin:0;
-    color:white;
     background-color:#3498db;
+}
+body,a{
+    font-family: 'Lato', sans-serif;
+    color:white;
 }
 footer{
     height:34px;
@@ -18,6 +20,9 @@ footer{
 .white{color:white;}
 .right-link{position:absolute;right:0;cursor:pointer;margin-top:5%;opacity:0.8}
 @media (orientation:portrait){
+    #news,#tasks,#weather,#travel,#stocks{
+        padding:2%;
+    }
     section{width:100%;}
     section > div:first-of-type{height:110px}
     div > div{height:110px;width:100%;}
@@ -47,6 +52,12 @@ footer{
         margin: 0;
         padding: 0;
         display: inline;
+    }
+}
+@media (min-width:838px){
+    #travel{
+        position: absolute;
+        width: 25%;
     }
 }
 @media (orientation:landscape){
@@ -125,3 +136,5 @@ ul{list-style-type:none;}
 .weather > ul > li:last-child > ul > li:last-child{width:40%;float:left;}
 .weather > ul > li:last-child > ul > li > ul {margin:0;padding:0;}
 .weather h2{padding:10% 0 0 0;margin:0 auto;text-align:center}
+.weather h2 .wi {font-size:300%;font-weight:bold;}
+.weather span .wi {font-size:100%;font-weight:bold;}

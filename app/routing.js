@@ -4,7 +4,7 @@
  */
 
 
-var routing = {}
+var routing = {};
 routing.routesArray = [];
 routing.register = function(path, callBack){
     var routeObject = {};
@@ -53,11 +53,11 @@ routing.register('stocks',function(){
     };
     //console.log("$$$$BAR %%%");
 });
-routing.register('calendar',function(){
+routing.register('tasks',function(){
     pageRoute = {
-        page:"calendar.html",
-        route:"app/calendar/",
-        controller:'calendar'
+        page:"tasks.html",
+        route:"app/tasks/",
+        controller:'tasks'
     };
     //console.log("$$$$BAR %%%");
 });
