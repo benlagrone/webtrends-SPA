@@ -12,18 +12,18 @@ services.getPage = function(url,id,callBack,page){
     xhttp.send();
 };
 services.routing = {};
-services.routing.changeHash = function(page,callback){
-    var newPageUrl = 'app/'+ page + '/' + page+'.html';
-    var newScriptUrl = 'app/'+ page + '/' + page+'.js';
+services.routing.changeHash = function(page){
+    var newPageUrl = pageRoute.route + pageRoute.page;
+    var newScriptUrl = pageRoute.route + pageRoute.script;
     services.getPage(newPageUrl,'content',services.routing.writeHTML,page);
     services.getPage(newScriptUrl,'head',services.routing.writeScript,page);
 };
 services.routing.useArray = function(path){
-    services.routing.changeHash(path)
     for(i=0;i<routing.routesArray.length;i++){
         if(routing.routesArray[i].path===path)
             routing.routesArray[i].callBack.call();
     }
+    services.routing.changeHash(path)
 };
 services.routing.writeHTML = function(xhr,id,page){
     var theHTML = xhr.responseText;

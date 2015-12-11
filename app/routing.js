@@ -1,8 +1,3 @@
-/**
- * Created by blagrone on 10/25/15.
- *
- */
-
 
 var routing = {};
 routing.routesArray = [];
@@ -10,71 +5,64 @@ routing.register = function(path, callBack){
     var routeObject = {};
     routeObject.path = path;
     routeObject.callBack = callBack;
-    routing.routesArray.push(routeObject)
+    routing.routesArray.push(routeObject);
 };
-routing.register('weather',function(evt){
+routing.register('weather',function(){
     pageRoute = {
         page:"weather.html",
         route:"app/weather/",
-        controller:'weather'
+        script:"weather.js"
     };
-    //console.log(evt)
-    //routing.changeHash("weather")
+    console.log('weather')
 });
-routing.register('home',function(evt){
+routing.register('home',function(){
     pageRoute = {
         page:"home.html",
         route:"app/home/",
-        controller:'home'
+        script:"home.js"
     };
-    //routing.changeHash("home")
+    console.log('home')
 });
-routing.register('travel',function(evt){
+routing.register('travel',function(){
     pageRoute = {
         page:"travel.html",
         route:"app/travel/",
-        controller:'travel'
+        script:"travel.js"
     };
-    //console.log(evt)
+    console.log('travel')
 });
 routing.register('news',function(){
     pageRoute = {
         page:"news.html",
         route:"app/news/",
-        controller:'news'
+        script:"news.js"
     };
-    //console.log("$$$$BAR %%%");
+    console.log('news')
 });
 routing.register('stocks',function(){
     pageRoute = {
         page:"stocks.html",
         route:"app/stocks/",
-        controller:'stocks'
+        script:"stocks.js"
     };
-    //console.log("$$$$BAR %%%");
+    console.log('stocks')
 });
 routing.register('tasks',function(){
     pageRoute = {
         page:"tasks.html",
         route:"app/tasks/",
-        controller:'tasks'
+        script:"tasks.js"
     };
-    //console.log("$$$$BAR %%%");
+    console.log('tasks')
 });
 
 
-
-
-
-
-
 window.onhashchange = function () {
-    services.routing.useArray(window.location.hash.split('#')[1])
+    services.routing.useArray(window.location.hash.split('/')[1])
 };
 
-window.onload = getLocationHash;
-if(window.location.hash=="")
-    window.location.hash = '#home';
-function getLocationHash(){
-    services.routing.useArray(window.location.hash.split("#")[1])
-}
+window.onload = function(){
+    if(window.location.hash=="")
+        window.location.hash = '#home';
+    services.routing.useArray(window.location.hash.split("/")[1])
+};

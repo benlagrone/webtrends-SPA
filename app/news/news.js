@@ -1,11 +1,12 @@
 var news = {};
 news.request = function(){
-    console.log(id)
+
     var apiKey = '24e09a475c690683d9d218c1260a6ca2:5:73536423';
     var section = 'world';
     var responseFormat = 'json';
     var url = 'http://api.nytimes.com/svc/topstories/v1/'+ section + '.' + responseFormat + '?api-key=' + apiKey;
     url2 = 'http://api.feedzilla.com/v1/categories.json';
+    //refactor this to send another callback to the parseAjax
     services.getPage(url,'test',news.parseAjax,id);
 };
 
