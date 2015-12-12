@@ -13,10 +13,8 @@ services.getPage = function(url,id,callBack,page){
 };
 services.routing = {};
 services.routing.changeHash = function(page){
-    var newPageUrl = pageRoute.route + pageRoute.page;
-    var newScriptUrl = pageRoute.route + pageRoute.script;
-    services.getPage(newPageUrl,'content',services.routing.writeHTML,page);
-    services.getPage(newScriptUrl,'head',services.routing.writeScript,page);
+    services.getPage(pageRoute.page,'content',services.routing.writeHTML,page);
+    services.getPage(pageRoute.script,'head',services.routing.writeScript,page);
 };
 services.routing.useArray = function(path){
     for(i=0;i<routing.routesArray.length;i++){
