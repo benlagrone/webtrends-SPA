@@ -18,12 +18,11 @@ home.correctDigit = function(i){
     if (i<10)i = "0" + i;  // add zero in front of numbers < 10
     return i;
 };
-home.getTime();
 
 
 home.loadSections = function() {
     for (i = 0; i < routing.routesArray.length; i++) {
-        routing.routesArray[i].callBack.call()
+        routing.routesArray[i].callBack.call();
         services.getPage(pageRoute.partial,routing.routesArray[i].path,services.routing.writeHTML);
         if(routing.routesArray[i].path!='home'){
             services.getPage(pageRoute.script,'head',services.routing.writeScript,routing.routesArray[i].path);
@@ -32,3 +31,4 @@ home.loadSections = function() {
 };
 
 home.loadSections();
+home.getTime();

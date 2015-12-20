@@ -1,21 +1,8 @@
-var pageRoute
+//var pageRoute
 var routing = {};
 routing.routesArray = [];
-routing.register = function(path, callBack){
-    var routeObject = {};
-    routeObject.path = path;
-    routeObject.callBack = callBack;
-    routing.routesArray.push(routeObject);
-};
-routing.register('weather',function(){
-    pageRoute = {
-        page:"./app/weather/weather.html",
-        partial:"./app/weather/home-weather.html",
-        script:"./app/weather/weather.js"
-    };
-    console.log('weather')
-});
-routing.register('home',function(){
+
+services.routing.register('home',function(){
     pageRoute = {
         page:"./app/home/home.html",
         partial:"./app/home/home-home.html",
@@ -23,7 +10,15 @@ routing.register('home',function(){
     };
     console.log('home')
 });
-routing.register('travel',function(){
+services.routing.register('weather',function(){
+    pageRoute = {
+        page:"./app/weather/weather.html",
+        partial:"./app/weather/home-weather.html",
+        script:"./app/weather/weather.js"
+    };
+    console.log('weather')
+});
+services.routing.register('travel',function(){
     pageRoute = {
         page:"./app/travel/travel.html",
         partial:"./app/travel/home-travel.html",
@@ -31,7 +26,7 @@ routing.register('travel',function(){
     };
     console.log('travel')
 });
-routing.register('news',function(){
+services.routing.register('news',function(){
     pageRoute = {
         page:"./app/news/news.html",
         partial:"./app/news/home-news.html",
@@ -39,7 +34,7 @@ routing.register('news',function(){
     };
     console.log('news')
 });
-routing.register('stocks',function(){
+services.routing.register('stocks',function(){
     pageRoute = {
         page:"./app/stocks/stocks.html",
         partial:"./app/stocks/home-stocks.html",
@@ -47,7 +42,7 @@ routing.register('stocks',function(){
     };
     console.log('stocks')
 });
-routing.register('tasks',function(){
+services.routing.register('tasks',function(){
     pageRoute = {
         page:"./app/tasks/tasks.html",
         partial:"./app/tasks/home-tasks.html",
@@ -57,17 +52,7 @@ routing.register('tasks',function(){
 });
 
 
-window.onhashchange = function () {
-    var url = window.location.hash.split('#')[1]
-    console.log(url)
-    services.routing.useArray(url)
-};
 
-window.onload = getLocationHash;
-if(window.location.hash=="")
-    window.location.hash = '#home';
-function getLocationHash(){
-    var url = window.location.hash.split('#')[1]
-    console.log(url)
-    services.routing.useArray(url)
-}
+
+window.onhashchange = services.routing.getLocationHash;
+window.onload = services.routing.getLocationHash;
